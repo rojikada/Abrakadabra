@@ -157,7 +157,13 @@ def _content(href: str):
                 value = dcc.Input(value=item["value"], type="number")
 
             rows.append(html.Div([html.Div(dcc.Input(value=item["name"], type="text")),
-                             html.Div(dcc.Dropdown()),
+                             html.Div(dcc.Dropdown([
+                                 {"value": "percent", "label": "Procenta"},
+                                 {"value": "fixed", "label": "Fixní"},
+                                 {"value": "rest", "label": "Zbytek"}
+                             ],
+                                 item["type"]
+                             )),
                              html.Div(value),
                              html.Div(str(item["costs"])+" Kč"),
                              ]))
